@@ -1,0 +1,30 @@
+{
+  "name": "url_shortener_app",
+  "version": "1.0.0",
+  "description": "URL shortener app for my resume",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "demon": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeti-detective/url_shortener_app.git"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "Christopher Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeti-detective/url_shortener_app/issues"
+  },
+  "homepage": "https://github.com/yeti-detective/url_shortener_app#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongodb": "^2.2.24",
+    "valid-url": "^1.0.9"
+  }
+}
