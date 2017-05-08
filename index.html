@@ -9,6 +9,7 @@
         margin: 0;
         background: linear-gradient(#EDE1E1, #FFFBFB);
         position: absolute;
+        font-family: 'Roboto', sans-serif;
       }
 
       #urlBox {
@@ -38,7 +39,15 @@
         background: #A7ACAF;
       }
 
+      #output {
+        margin: auto;
+        width: 90%;
+        min-width: 300px;
+        text-align: center;
+      }
+
     </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   </head>
   <body>
     <div id="urlBox">
@@ -48,16 +57,16 @@
     <div id="output"></div>
     <script>
       window.addEventListener("keydown", keyDown, true)
-
+      document.getElementById("textbox").focus()
       function keyDown(e){
         // console.log(e.key)
-        if (e.key == "Enter"){
-          console.log("submitted")
+        if (e.key == "Enter" && document.activeElement.id == "textbox"){
+          shortee()
         }
       }
 
       function shortee(){
-        console.log(document.getElementById('textbox').value)
+        document.getElementById('output').innerHTML = '<p>' + document.getElementById('textbox').value + '</p>'
       }
     </script>
   </body>
