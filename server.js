@@ -37,7 +37,6 @@ mongo.connect('mongodb://quote-app:Quote-App@ds157278.mlab.com:57278/yetis_first
         if(err) return console.log(err);
         urlRegister = parseInt(result[0].master);
     })
-
 });
 
 app.get("/:key", function(req, res){

@@ -2,15 +2,63 @@
   <head>
     <title>Sho-TAYEE!</title>
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-      }
 
       body {
-        background: linear-gradient(#FFFBFB, #EDE1E1)
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        background: linear-gradient(#EDE1E1, #FFFBFB);
+        position: absolute;
       }
+
+      #urlBox {
+        height: 30%;
+        min-height: 70px;
+        width: 35%;
+        min-width: 300px;
+        margin: auto;
+        margin-top: 10%;
+        text-align: center;
+      }
+
+      #textbox {
+        border-radius: 10px;
+        padding: 4px;
+      }
+
+      #shotay {
+        background: #F2FAFF;
+        border-radius: 10px;
+        display: inline-block;
+        border: solid 1px black;
+        margin-top: 4px;
+      }
+
+      #shotay:hover {
+        background: #A7ACAF;
+      }
+
     </style>
   </head>
-  <body></body>
+  <body>
+    <div id="urlBox">
+      <input id="textbox" type="text" placeholder="input url here"></input>
+      <button id="shotay" onclick="shortee()">shorten</button>
+    </div>
+    <div id="output"></div>
+    <script>
+      window.addEventListener("keydown", keyDown, true)
+
+      function keyDown(e){
+        // console.log(e.key)
+        if (e.key == "Enter"){
+          console.log("submitted")
+        }
+      }
+
+      function shortee(){
+        console.log(document.getElementById('textbox').value)
+      }
+    </script>
+  </body>
 </html>
