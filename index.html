@@ -31,12 +31,14 @@
         background: #F2FAFF;
         border-radius: 10px;
         display: inline-block;
-        border: solid 1px black;
+        border: solid 1px #707486;
         margin-top: 4px;
+        color: #202434;
       }
 
       #shotay:hover {
         background: #A7ACAF;
+        color: #707486;
       }
 
       #output {
@@ -54,7 +56,7 @@
       <input id="textbox" type="text" placeholder="input url here"></input>
       <button id="shotay" onclick="shortee()">shorten</button>
     </div>
-    <div id="output"></div>
+    <div id="output">your shortened url will appear here</div>
     <script>
       window.addEventListener("keydown", keyDown, true)
       document.getElementById("textbox").focus()
@@ -66,7 +68,22 @@
       }
 
       function shortee(){
-        document.getElementById('output').innerHTML = '<p>' + document.getElementById('textbox').value + '</p>'
+        if(document.getElementById('textbox').value != ''){
+          var sendUrl = new XMLHttpRequest();
+          sendUrl.open('GET', 'http://localhost:8080/' + document.getElementById('textbox').value, true)
+
+          sendUrl.onload = (res)=>{
+            if(res.currentTarget.responseText.substr(res.currentTarget.responseText.length - 5) == 'again'){
+                document.getElementById('output').innerHTML = '<p>' + res.currentTarget.responseText + '</p>'
+            }else{
+              document.getElementById('output').innerHTML = '<p><a href="' + JSON.parse(res.currentTarget.responseText).short_url + '" target="_blank">' + JSON.parse(res.currentTarget.responseText).short_url + '</a></p>'
+            }
+          }
+          sendUrl.send(null)
+        }
+
+
+        //document.getElementById('output').innerHTML = '<p>' + document.getElementById('textbox').value + '</p>'
       }
     </script>
   </body>

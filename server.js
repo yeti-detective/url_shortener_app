@@ -36,6 +36,7 @@ mongo.connect('mongodb://quote-app:Quote-App@ds157278.mlab.com:57278/yetis_first
     db.collection('urls').find({}, {_id: 0, master: 1}).toArray((err, result) => {
         if(err) return console.log(err);
         urlRegister = parseInt(result[0].master);
+        console.log(urlRegister);
     })
 });
 
@@ -57,12 +58,11 @@ app.get("/:key", function(req, res){
 });
 
 app.get('/http:\//:url', function(req, res){
-    if(Boolean(validUrl.isUri('http://' + req.params.url))){
-        console.log('this happened!');
-        shortener(urlRegister, 'http://' + req.params.url, res);
-    }else{
-        failure(req.params.url.toString(), res);
-    }
+  if(Boolean(validUrl.isUri('http://' + req.params.url))){
+    shortener(urlRegister, 'http://' + req.params.url, res);
+  }else{
+    failure(req.params.url.toString(), res);
+  }
 });
 
 app.get('/https:\//:urlSSH', function(req, res){
