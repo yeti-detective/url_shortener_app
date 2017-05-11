@@ -70,7 +70,7 @@
       function shortee(){
         if(document.getElementById('textbox').value != ''){
           var sendUrl = new XMLHttpRequest();
-          sendUrl.open('GET', 'http://localhost:8080/' + document.getElementById('textbox').value, true)
+          sendUrl.open('GET', 'https://yetis-url-shortener.herokuapp.com/' + document.getElementById('textbox').value, true)
 
           sendUrl.onload = (res)=>{
             if(res.currentTarget.responseText.substr(res.currentTarget.responseText.length - 5) == 'again'){
