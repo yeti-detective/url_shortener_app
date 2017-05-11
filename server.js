@@ -1,3 +1,6 @@
+// past Chris did not comment his code.
+// past Chris is an asshole...
+
 var port = process.env.PORT || 8080;
 var express = require('express');
 var app = express();
@@ -9,16 +12,17 @@ var db;
 var urlRegister;
 
 function shortener(key, url, response){
+    console.log("urlRegister: " + urlRegister);
     db.collection('urls').save({"key": key, "url": url});
     db.collection('urls').updateOne(
-        {"master": key},
-        { $set: {"master": key+1} }
+      {"_id": 0},
+      { $set: {"master": key+1} }
     );
     urlRegister++;
     db.collection('urls').find({"key": key}, {_id: 0, key: 1, url: 1}).toArray((err, result) => {
-            if(err) return console.log(err);
-            var finalAnswer = { "original_url": result[0].url, "short_url": "https://yetis-url-shortener.herokuapp.com/" + result[0].key};
-            response.send(JSON.stringify(finalAnswer));
+      if(err) return console.log(err);
+      var finalAnswer = { "original_url": result[0].url, "short_url": "https://yetis-url-shortener.herokuapp.com/" + result[0].key};
+      response.send(JSON.stringify(finalAnswer));
     });
 }
 
