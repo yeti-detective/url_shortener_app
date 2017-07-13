@@ -26,5 +26,8 @@
     "express": "^4.15.2",
     "mongodb": "^2.2.24",
     "valid-url": "^1.0.9"
+  },
+  "engines": {
+    "node": "6.11.1"
   }
 }
